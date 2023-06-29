@@ -1,5 +1,7 @@
 import datetime
 import traceback
+
+from django.shortcuts import redirect
 from django.utils.deprecation import MiddlewareMixin
 from django.conf import settings
 import jwt
@@ -19,30 +21,42 @@ def access_token(username):
 class AuthMiddleware(MiddlewareMixin):
     def process_view(self,request,view_func,*view_args,**view_kwargs):
         try:
-            print("checking Process of Middleware")
+            access_=request.COOKIES.get('Authorization')
+
             if "signin" in str(request):
-                print('contains signin or signup')
-                return None
+                if access_=="":
+                    return None
+                else:
+                    return redirect('Home')
             elif 'signup' in str(request):
-                return None
+                if access_=="":
+                    return None
+                else:
+                    return redirect('Home')
             elif 'welcome' in str(request):
+                if access_=="":
+                    return None
+                else:
+                    return redirect('Home')
+            elif 'signout' in str(request):
+
+                # print(request.COOKIES.get('Authorization'))
+                # request.delete_cookie('Authorization')
                 return None
-            elif "Authorization" in request.headers:
-                print('contains authorization')
-                access_=request.headers.get('Authorization')
+            elif "Authorization" in request.COOKIES:
                 decode_json=jwt.decode(access_,settings.SECRET_KEY,algorithms='HS256')
                 id_=decode_json["username"]
                 try:
                     user=USERS.objects.get(username=id_)
-                    if decode_json['exp']<=datetime.datetime.utcnow():
+                    dd=datetime.datetime.utcfromtimestamp(decode_json['exp'])
+                    if dd >= datetime.datetime.utcnow():
                         return None
                     else:
-                        return HttpResponse("Please login again")
+                        return redirect('signin')
                 except:
-                    return HttpResponse("User not valid")
+                    return redirect('signin')
             else:
-                print('no',request,request.headers)
-                return HttpResponse("Authorization Failed")
+                return redirect('signin')
         except:
             traceback.print_exc()
-            return HttpResponse("Authorization Failed")
+            return redirect('signin')

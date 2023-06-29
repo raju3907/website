@@ -1,9 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>HOME</title>
-       <style>
+<title>BGR blog</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<style>
+body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     .button {
         display: inline-block;
         padding: 15px 25px;
@@ -26,13 +30,144 @@
         box-shadow: 0 5px #666;
         transform: translateY(4px);
     }
-    </style>
+</style>
 </head>
-<body background="https://images.pexels.com/photos/1366957/pexels-photo-1366957.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
-<h1 align="middle" style="background-color:skyblue;color:black;font-size: 50px">Welcome to BGR Website</h1>
-<button type="submit" class="button" style="float:right"><a href="signout">Logout</a></button>
+<body class="w3-light-grey">
 
+<!-- w3-content defines a container for fixed size centered content,
+and is wrapped around the whole page content, except for the footer in this example -->
+<div class="w3-content" style="max-width:1400px">
 
+<!-- Header -->
+<header class="w3-container w3-center w3-padding-32">
+  <h1><b>BGR BLOG</b></h1>
+  <p align="middle">Welcome to the blog of <span class="w3-tag">Gopiraj,Balakonda</span></p>
+  <p align="right"> Hi {{firstname}}{{lastname}}</p>
+    <button type="submit" class="button" style="float:right"><a href="signout">Logout</a></button>
+</header>
+
+<!-- Grid -->
+<div class="w3-row">
+
+<!-- Blog entries -->
+<div class="w3-col l8 s12">
+  <!-- Blog entry -->
+  <div class="w3-card-4 w3-margin w3-white">
+    <img src="https://images.squarespace-cdn.com/content/v1/5ffde43b0bb1474e6957a664/1611251882032-2YKWC0F9DYKW7IS14H2W/ke17ZwdGBToddI8pDm48kM1GNskWUGnilvrI43BdF4kUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8N_N4V1vUb5AoIIIbLZhVYy7Mythp_T-mtop-vrsUOmeInPi9iDjx9w8K4ZfjXt2diwcMB7jNZ0aY4yHhTGdhFV5C7S-NdHSvQmadPWVve8Sm7cT0R_dexc_UL_zbpz6JQ/land-hero-1.jpg?format=original" alt="Nature" style="width:100%">
+    <div class="w3-container">
+      <h3><b>First Blog</b></h3>
+      <h5>Description, <span class="w3-opacity">June 29, 2023</span></h5>
+    </div>
+
+    <div class="w3-container">
+      <p>I'm created this website normally and after will updated into Blog website if you're seeing my Blog means you will completed Authentication. Thank you for the registration. And these Blog website in Beta process hopefully may be i will complete full website. thanks for coming for this website.</p>
+      <div class="w3-row">
+        <div class="w3-col m8 s12">
+          <p><button class="w3-button w3-padding-large w3-white w3-border"><b>READ MORE »</b></button></p>
+        </div>
+        <div class="w3-col m4 w3-hide-small">
+          <p><span class="w3-padding-large w3-right"><b>Comments  </b> <span class="w3-tag">0</span></span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+
+  <!-- Blog entry -->
+  <div class="w3-card-4 w3-margin w3-white">
+  <img src="https://wallpapercave.com/wp/wp7348236.jpg" alt="Norway" style="width:100%">
+    <div class="w3-container">
+      <h3><b>Website details</b></h3>
+      <h5>Title description, <span class="w3-opacity">June 29, 2023</span></h5>
+    </div>
+
+    <div class="w3-container">
+      <p>Mostly these website contains different templates you may experience any difficlties in below you found my Linkedin and instagram ID's if you face any issue Don't hesitate to report or dm me if required.I don't have full informations to Update now.You may see comments in below section but those are static or default and some of the buttons will not work because those are still in development stage.</p>
+      <div class="w3-row">
+        <div class="w3-col m8 s12">
+          <p><button class="w3-button w3-padding-large w3-white w3-border"><b>READ MORE »</b></button></p>
+        </div>
+        <div class="w3-col m4 w3-hide-small">
+          <p><span class="w3-padding-large w3-right"><b>Comments  </b> <span class="w3-badge">2</span></span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- END BLOG ENTRIES -->
+</div>
+
+<!-- Introduction menu -->
+<div class="w3-col l4">
+  <!-- About Card -->
+  <div class="w3-card w3-margin w3-margin-top">
+  <img src="https://th.bing.com/th/id/OIP.LSWWp1HgPhGVlWbfYKVtmQHaHa?pid=ImgDet&rs=1" style="width:100%">
+    <div class="w3-container w3-white">
+      <h4><b>GOPIRAJ BALAKONDA</b></h4>
+      <p>If you want more details follow me on Linkedin and Instagram. The links are in below.</p>
+    </div>
+  </div><hr>
+
+  <!-- Posts -->
+  <div class="w3-card w3-margin">
+    <div class="w3-container w3-padding">
+      <h4>Intrest's</h4>
+    </div>
+    <ul class="w3-ul w3-hoverable w3-white">
+      <li class="w3-padding-16">
+        <img src="https://th.bing.com/th/id/OIP.0D2NU4QEzwSVZIXHpJ6AeAHaDt?w=322&h=174&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+        <span class="w3-large">PC Games</span><br>
+        <span>GTA 5,COD,mostly story based  and etc.</span>
+      </li>
+      <li class="w3-padding-16">
+        <img src="https://th.bing.com/th/id/OIP.Qyhv0nvq7xHLZ4zSFZRXtwHaEo?w=261&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+        <span class="w3-large">Movies</span><br>
+        <span>Tollywood and Hollywood t</span>
+      </li>
+      <li class="w3-padding-16">
+        <img src="https://plopdo.com/wp-content/uploads/2021/10/What-is-back-end-development-2.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+        <span class="w3-large">Coding</span><br>
+        <span>Python </span>
+      </li>
+      <li class="w3-padding-16 w3-hide-medium w3-hide-small">
+        <img src="https://wideo.co/wp-content/uploads/2017/11/WIDEO2-1.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+        <span class="w3-large">Travel</span><br>
+        <span>Still planning...</span>
+      </li>
+    </ul>
+  </div>
+  <hr>
+
+  <!-- Labels / tags -->
+  <div class="w3-card w3-margin">
+    <div class="w3-container w3-padding">
+      <h4>Tags</h4>
+    </div>
+    <div class="w3-container w3-white">
+    <p><span class="w3-tag w3-black w3-margin-bottom">Travel</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">INDIA</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">GTA 5</span>
+      <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">300</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">coding</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">DIY</span>
+      <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Ideas</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Baby</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Family</span>
+      <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">News</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Clothing</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Shopping</span>
+      <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Sports</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Games</span>
+    </p>
+    </div>
+  </div>
+
+<!-- END Introduction Menu -->
+</div>
+
+<!-- END GRID -->
+</div><br>
+
+<!-- END w3-content -->
+</div>
+
+<!-- Footer -->
+<footer class="w3-container w3-dark-grey w3-padding-32 w3-margin-top">
+  <button class="w3-button w3-black w3-disabled w3-padding-large w3-margin-bottom">Previous</button>
+  <button class="w3-button w3-black w3-padding-large w3-margin-bottom">Next »</button>
+  <p>follow me on   <img src="https://th.bing.com/th/id/OIP.DgVNhFcvWWSCxJpVWsry4wHaHV?pid=ImgDet&rs=1" alt="Linkedin" width="40" height="40"/> <a href="https://www.linkedin.com/in/balakonda-gopiraj-91329a205/">Linkedin</a>
+  &    <img src="https://th.bing.com/th/id/R.4c3e30c8be83378f4b2018d1575d4c40?rik=KNNmdnGnXSmG6A&riu=http%3a%2f%2feternylstudios.com%2fwp-content%2fuploads%2f2019%2f02%2finstagram-logo-2.png&ehk=54peAG5doK0P0H8JDgLuZnYF8pFCddVHnHynKIIj2Mw%3d&risl=&pid=ImgRaw&r=0" width="40" height="40"/> <a href="https://instagram.com/gopiraj_balakonda?igshid=MzNlNGNkZWQ4Mg==">Instagram</a></p>
+</footer>
 
 </body>
 </html>

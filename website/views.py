@@ -5,9 +5,11 @@ from rest_framework import status
 from rest_framework.response import Response
 from django.contrib import messages
 import traceback
+import jwt
 from . import models
 from.models import USERS
 from.Login import access_token
+from django.conf import settings
 
 def Login(request):
     try:
@@ -53,9 +55,8 @@ def signin(request):
                 user=USERS.objects.get(username=username,password=password)
                 print(user.firstname)
                 accesstoken=access_token(user.username)
-                print(accesstoken)
                 resp=redirect('Home')
-                resp['Authorization']=accesstoken
+                resp.set_cookie('Authorization',accesstoken,max_age=259200)
                 return resp
             except:
                 traceback.print_exc()
@@ -67,7 +68,26 @@ def signin(request):
     except:
         traceback.print_exc()
 def Home(request):
-    return render(request,"Home.html")
+    try:
+        id=request.COOKIES.get('Authorization')
+        decode_json = jwt.decode(id, settings.SECRET_KEY, algorithms='HS256')
+        id_ = decode_json["username"]
+        user=USERS.objects.get(username=id_)
+        data={
+            "firstname":user.firstname,
+            "lastname":user.lastname,
+            "username":user.username
+        }
+        print(user.firstname,"firstname")
+        return render(request,"Home.html",data)
+    except:
+        traceback.print_exc()
 
 def signout(request):
-    return render(request,"welcome.html")
+    try:
+        resp = redirect('signin')
+        resp.set_cookie('Authorization', "")
+        return resp
+
+    except:
+        traceback.print_exc()
