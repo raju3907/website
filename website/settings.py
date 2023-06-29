@@ -28,7 +28,7 @@ SECRET_KEY = 'iwfvb6!m34(2uo=^qkv)g18b@7-tn07tm_3sls7us!e4shl@#_'
 DEBUG = False
 APPEND_SLASH=False
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = [".vercel.app",'.now.sh']
 
 
 # Application definition
@@ -122,3 +122,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR/'staticfiles_build'/'static'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+# HTTPS SETTINGS
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+SECURE_SSL_REDIRECT = True
+
+# HSTS SETTINGS
+SECURE_HSTS_SECONDS = 3153600
+SECURE_HSTS_PRELOAD = True
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
