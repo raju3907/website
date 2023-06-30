@@ -43,7 +43,8 @@ def signup(request):
 
         print ("Signup done")
         return render(request,"signup.html")
-    except:
+    except Exception as e:
+        print(e)
         traceback.print_exc()
 def signin(request):
     try:
@@ -65,7 +66,8 @@ def signin(request):
         print("signin")
         return render(request, "signin.html")
 
-    except:
+    except Exception as e:
+        print(e)
         traceback.print_exc()
 def Home(request):
     try:
@@ -80,7 +82,8 @@ def Home(request):
         }
         print(user.firstname,"firstname")
         return render(request,"Home.html",data)
-    except:
+    except Exception as e:
+        print(e)
         traceback.print_exc()
 
 def signout(request):
