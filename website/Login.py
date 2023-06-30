@@ -22,15 +22,15 @@ class AuthMiddleware(MiddlewareMixin):
     def process_view(self,request,view_func,*view_args,**view_kwargs):
         try:
             access_=request.COOKIES.get('Authorization')
-            print("Checking Middleware",access_)
+            print("Checking Middleware",access_, type(access_))
             if 'signout' in str(request):
 
                 # print(request.COOKIES.get('Authorization'))
                 # request.delete_cookie('Authorization')
                 return None
-            elif access_==None and 'home' not in str(request):
+            elif (access_==None or access_=="") and 'home' not in str(request):
                 return None
-            elif access_!=None:
+            elif access_!=None and access_=="":
                 print("contains authorization",access_)
 
                 decode_json=jwt.decode(access_,settings.SECRET_KEY,algorithms='HS256')

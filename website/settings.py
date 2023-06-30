@@ -76,7 +76,7 @@ WSGI_APPLICATION = 'website.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-mongoengine.connect(host="mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.9.1")
+mongoengine.connect(host="mongodb+srv://vercel-admin-user:Bgr4674@cluster0.t1jlh5q.mongodb.net/")
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.sqlite3',
