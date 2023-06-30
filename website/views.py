@@ -71,6 +71,7 @@ def signin(request):
         traceback.print_exc()
 def Home(request):
     try:
+        print("Home page")
         id=request.COOKIES.get('Authorization')
         decode_json = jwt.decode(id, settings.SECRET_KEY, algorithms='HS256')
         id_ = decode_json["username"]

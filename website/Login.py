@@ -30,7 +30,7 @@ class AuthMiddleware(MiddlewareMixin):
                 return None
             elif (access_==None or access_=="") and 'home' not in str(request):
                 return None
-            elif access_!=None and access_=="":
+            else:
                 print("contains authorization",access_)
 
                 decode_json=jwt.decode(access_,settings.SECRET_KEY,algorithms='HS256')
@@ -44,8 +44,7 @@ class AuthMiddleware(MiddlewareMixin):
                         return HttpResponse("Authorization Expired")
                 except:
                     return HttpResponse("Failed to Login")
-            else:
-                return redirect('Login')
+
         except:
             traceback.print_exc()
             return redirect('signin')
