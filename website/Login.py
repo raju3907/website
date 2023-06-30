@@ -28,7 +28,7 @@ class AuthMiddleware(MiddlewareMixin):
                 # print(request.COOKIES.get('Authorization'))
                 # request.delete_cookie('Authorization')
                 return None
-            elif access_==None:
+            elif access_==None and 'home' not in str(request):
                 return None
             elif access_!=None:
                 print("contains authorization",access_)
