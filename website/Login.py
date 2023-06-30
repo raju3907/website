@@ -22,28 +22,17 @@ class AuthMiddleware(MiddlewareMixin):
     def process_view(self,request,view_func,*view_args,**view_kwargs):
         try:
             access_=request.COOKIES.get('Authorization')
-
-            if "signin" in str(request):
-                if access_=="":
-                    return None
-                else:
-                    return redirect('Home')
-            elif 'signup' in str(request):
-                if access_=="":
-                    return None
-                else:
-                    return redirect('Home')
-            elif 'welcome' in str(request):
-                if access_=="":
-                    return None
-                else:
-                    return redirect('Home')
-            elif 'signout' in str(request):
+            print("Checking Middleware",access_)
+            if 'signout' in str(request):
 
                 # print(request.COOKIES.get('Authorization'))
                 # request.delete_cookie('Authorization')
                 return None
-            elif "Authorization" in request.COOKIES:
+            elif access_==None:
+                return None
+            elif access_!=None:
+                print("contains authorization",access_)
+
                 decode_json=jwt.decode(access_,settings.SECRET_KEY,algorithms='HS256')
                 id_=decode_json["username"]
                 try:
@@ -52,11 +41,11 @@ class AuthMiddleware(MiddlewareMixin):
                     if dd >= datetime.datetime.utcnow():
                         return None
                     else:
-                        return redirect('signin')
+                        return HttpResponse("Authorization Expired")
                 except:
-                    return redirect('signin')
+                    return HttpResponse("Failed to Login")
             else:
-                return redirect('signin')
+                return redirect('Login')
         except:
             traceback.print_exc()
             return redirect('signin')

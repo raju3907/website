@@ -25,10 +25,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'iwfvb6!m34(2uo=^qkv)g18b@7-tn07tm_3sls7us!e4shl@#_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-APPEND_SLASH=False
+DEBUG =True
 
-ALLOWED_HOSTS = [".vercel.app",'.now.sh']
+
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -126,11 +126,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 # HTTPS SETTINGS
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
-SECURE_SSL_REDIRECT = True
+# SESSION_COOKIE_SECURE = True
+# CSRF_COOKIE_SECURE = True
+# SECURE_SSL_REDIRECT = False
 
-# HSTS SETTINGS
-SECURE_HSTS_SECONDS = 3153600
-SECURE_HSTS_PRELOAD = True
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+# # HSTS SETTINGS
+# SECURE_HSTS_SECONDS = 3153600
+# SECURE_HSTS_PRELOAD = True
+# SECURE_HSTS_INCLUDE_SUBDOMAINS = True
