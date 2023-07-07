@@ -140,6 +140,14 @@ input[type=submit]:hover {
 <div class="container">
   <form action="signin" method="post">
     {% csrf_token %}
+    
+    {% for message in messages %}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert" style="background-color:red;width:100px;height:30px" align="left">
+      <strong></strong> {{message}}
+
+      </div>
+    {% endfor %}
     <div class="row">
       <h2 style="text-align:center">Login with Social Media or Manually</h2>
       <div class="vl">

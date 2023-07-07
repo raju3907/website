@@ -61,7 +61,7 @@ def signin(request):
                 return resp
             except:
                 traceback.print_exc()
-                return HttpResponse("Invalid Username or Password")
+                messages.error(request, "Invalid Credentails")
 
         print("signin")
         return render(request, "signin.html")

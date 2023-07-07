@@ -22,7 +22,6 @@ class AuthMiddleware(MiddlewareMixin):
     def process_view(self,request,view_func,*view_args,**view_kwargs):
         try:
             access_=request.COOKIES.get('Authorization')
-            print("Checking Middleware",access_, type(access_))
             if 'signout' in str(request):
 
                 # print(request.COOKIES.get('Authorization'))
@@ -31,7 +30,6 @@ class AuthMiddleware(MiddlewareMixin):
             elif (access_==None or access_=="") and 'home' not in str(request):
                 return None
             else:
-                print("contains authorization",access_)
 
                 decode_json=jwt.decode(access_,settings.SECRET_KEY,algorithms='HS256')
                 id_=decode_json["username"]
@@ -39,7 +37,12 @@ class AuthMiddleware(MiddlewareMixin):
                     user=USERS.objects.get(username=id_)
                     dd=datetime.datetime.utcfromtimestamp(decode_json['exp'])
                     if dd >= datetime.datetime.utcnow():
-                        return None
+                        if 'signin' in str(request):
+                            return redirect('Home')
+                        elif 'signup' in str(request):
+                            return redirect('Home')
+                        else:
+                            return None
                     else:
                         return HttpResponse("Authorization Expired")
                 except:

@@ -14,6 +14,7 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import mongoengine
+from django.contrib.messages import constants as messages
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -134,3 +135,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 # SECURE_HSTS_SECONDS = 3153600
 # SECURE_HSTS_PRELOAD = True
 # SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+
+
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger'
+}
