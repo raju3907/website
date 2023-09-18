@@ -26,9 +26,13 @@ def signup(request):
             lastname = request.POST["lastname"]
             mobile = request.POST["mobile"]
             if USERS.objects.filter(username=username).count() > 0:
-                return HttpResponse("Username already exist")
+                messages.error(request, "Username already exist")
+                return render(request,"signup.html")
+                # return HttpResponse("Username already exist")
             if len(mobile) != 10:
-                return HttpResponse("Please Enter 10 digit mobile number")
+                messages.error(request, "Please Enter 10 digit mobile number")
+                return render(request,"signup.html")
+                # return HttpResponse("Please Enter 10 digit mobile number")
             new_user = USERS.objects.create(username=username,password=password)
             new_user.mobile=mobile
             new_user.firstname = firstname
@@ -44,6 +48,7 @@ def signup(request):
         print ("Signup done")
         return render(request,"signup.html")
     except Exception as e:
+        traceback.print_exc()
         print(e)
         traceback.print_exc()
 def signin(request):
