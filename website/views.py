@@ -114,7 +114,7 @@ def Base(request):
             "username":user.username
         }
         print(user.firstname,"firstname")
-        return render(request,"Base.html",data)
+        return render(request,"base.html",data)
     except Exception as e:
         print(e)
         traceback.print_exc()
