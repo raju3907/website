@@ -118,4 +118,4 @@ def Base(request):
     except Exception as e:
         print(e)
         traceback.print_exc()
-        return HttpResponse(str(e))
+        return HttpResponse(traceback.print_exc())
