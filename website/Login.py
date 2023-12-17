@@ -36,6 +36,7 @@ class AuthMiddleware(MiddlewareMixin):
                 try:
                     user=USERS.objects.get(username=id_)
                     dd=datetime.datetime.utcfromtimestamp(decode_json['exp'])
+                    print("success 1")
                     if dd >= datetime.datetime.utcnow():
                         if 'signin' in str(request):
                             return redirect('Home')
@@ -46,6 +47,7 @@ class AuthMiddleware(MiddlewareMixin):
                     else:
                         return HttpResponse("Authorization Expired")
                 except:
+                    traceback.print_exc()
                     return HttpResponse("Failed to Login")
 
         except:

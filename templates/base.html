@@ -60,12 +60,12 @@
             color: #fff;
         }
 
-        .register-button {
+        .blog-button {
             background-color: #3498db;
             color: #fff;
         }
 
-        .login-button {
+        .ecommerce-button {
             background-color: #2ecc71;
             color: #fff;
         }
@@ -73,11 +73,12 @@
         .container {
             max-width: 1000px;
             width: 100%;
+            color:black;
+            background-color:#37F4FA;
             padding: 20px;
-            margin-top: 120px;
+            margin-top: 1px;
             box-sizing: border-box;
             padding: 250px 20px 20px; /* Adjusted top padding to account for fixed header */
-            background-color:#37F4FA;
             border-radius: 50px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
         }
@@ -96,16 +97,20 @@
 <body>
     <header>
         <h1>BGR Website</h1>
-        <nav>
-            <div class="button-container">
-                <a href="signup" class="button register-button">Sign Up</a>
-                <a href="signin" class="button login-button">Sign In</a>
-            </div>
-        </nav>
+        
+        <button type="submit" class="button" style="float:right"><a href="signout">Logout</a></button>
     </header>
     <div class="container">
-        <h2>Welcome to BGR Website</h2>
-        <p>Please Sign in to know more about this website.</p>
+        <p color='red'> Hi {{firstname}} {{lastname}}</p>
+        <h2>Welcome to BGR Website </h2>
+        <p>Please Select below Buttons for Navigation</p>
+        <nav>
+            <div class="button-container">
+                <a href="home" class="button blog-button"> Blog</a>
+                <a href="ecommerce/dashboard" class="button ecommerce-button">ecommerce</a>
+            </div>
+        </nav>
+        
     </div>
     <footer>
         <p align='center'>&copy; 2023 BGR Website. All rights reserved.</p>

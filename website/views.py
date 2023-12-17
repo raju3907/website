@@ -61,8 +61,9 @@ def signin(request):
                 user=USERS.objects.get(username=username,password=password)
                 print(user.firstname)
                 accesstoken=access_token(user.username)
-                resp=redirect('Home')
+                resp=redirect('Base')
                 resp.set_cookie('Authorization',accesstoken,max_age=259200)
+                print(resp)
                 return resp
             except:
                 traceback.print_exc()
@@ -72,7 +73,7 @@ def signin(request):
         return render(request, "signin.html")
 
     except Exception as e:
-        print(e)
+        print("got error",e)
         traceback.print_exc()
 def Home(request):
     try:
@@ -99,4 +100,21 @@ def signout(request):
         return resp
 
     except:
+        traceback.print_exc()
+def Base(request):
+    try:
+        print("Home page")
+        id=request.COOKIES.get('Authorization')
+        decode_json = jwt.decode(id, settings.SECRET_KEY, algorithms='HS256')
+        id_ = decode_json["username"]
+        user=USERS.objects.get(username=id_)
+        data={
+            "firstname":user.firstname,
+            "lastname":user.lastname,
+            "username":user.username
+        }
+        print(user.firstname,"firstname")
+        return render(request,"Base.html",data)
+    except Exception as e:
+        print(e)
         traceback.print_exc()
