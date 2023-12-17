@@ -61,7 +61,7 @@ def signin(request):
                 user=USERS.objects.get(username=username,password=password)
                 print(user.firstname)
                 accesstoken=access_token(user.username)
-                resp=redirect('base')
+                resp=redirect('Base')
                 resp.set_cookie('Authorization',accesstoken,max_age=259200)
                 print(resp)
                 return resp
