@@ -27,7 +27,7 @@ class AuthMiddleware(MiddlewareMixin):
                 # print(request.COOKIES.get('Authorization'))
                 # request.delete_cookie('Authorization')
                 return None
-            elif (access_==None or access_=="") and 'home' not in str(request):
+            elif (access_==None or access_=="") and  ('signin' or 'signup') in str(request):
                 return None
             else:
 
@@ -39,9 +39,9 @@ class AuthMiddleware(MiddlewareMixin):
                     print("success 1")
                     if dd >= datetime.datetime.utcnow():
                         if 'signin' in str(request):
-                            return redirect('Home')
+                            return redirect('Base')
                         elif 'signup' in str(request):
-                            return redirect('Home')
+                            return redirect('Base')
                         else:
                             return None
                     else:
