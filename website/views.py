@@ -25,6 +25,7 @@ def signup(request):
             firstname = request.POST["firstname"]
             lastname = request.POST["lastname"]
             mobile = request.POST["mobile"]
+            print(USERS.objects.filter(username=username).count())
             if USERS.objects.filter(username=username).count() > 0:
                 messages.error(request, "Username already exist")
                 return render(request,"signup.html")
@@ -33,8 +34,7 @@ def signup(request):
                 messages.error(request, "Please Enter 10 digit mobile number")
                 return render(request,"signup.html")
                 # return HttpResponse("Please Enter 10 digit mobile number")
-            new_user = USERS.objects.create(username=username,password=password)
-            new_user.mobile=mobile
+            new_user = USERS.objects.create(username=username,password=password,mobilenumber=mobile)
             new_user.firstname = firstname
             new_user.lastname = lastname
 
@@ -49,8 +49,7 @@ def signup(request):
         return render(request,"signup.html")
     except Exception as e:
         traceback.print_exc()
-        print(e)
-        traceback.print_exc()
+        return HttpResponse('Unable to sign Up',str(e))
 def signin(request):
     try:
         if request.method == "POST":
@@ -59,7 +58,6 @@ def signin(request):
             try:
                 print("checking credentials")
                 user=USERS.objects.get(username=username,password=password)
-                print(user.firstname)
                 accesstoken=access_token(user.username)
                 resp=redirect('Base')
                 resp.set_cookie('Authorization',accesstoken,max_age=259200)

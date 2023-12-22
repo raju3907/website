@@ -8,4 +8,4 @@ class USERS(Document):
     lastname = fields.StringField(null=True)
     mobilenumber = fields.StringField(required=True)
 
-    meta={'auto_create_index': False}
+    meta={'collection':'Users','auto_create_index': False}
