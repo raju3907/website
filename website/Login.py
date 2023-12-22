@@ -22,15 +22,21 @@ class AuthMiddleware(MiddlewareMixin):
     def process_view(self,request,view_func,*view_args,**view_kwargs):
         try:
             access_=request.COOKIES.get('Authorization')
+            print(request.path)
             if 'signout' in str(request):
 
                 # print(request.COOKIES.get('Authorization'))
                 # request.delete_cookie('Authorization')
                 return None
-            elif (access_==None or access_=="") and  ('signin' or 'signup') in str(request):
-                return None
+            
+            elif (access_==None or access_==""):
+                if 'signup' in str(request):
+                    return None
+                elif 'signin' in str(request):
+                    return None
+                elif request.path=='/':
+                    return None
             else:
-
                 decode_json=jwt.decode(access_,settings.SECRET_KEY,algorithms='HS256')
                 id_=decode_json["username"]
                 try:
@@ -47,9 +53,7 @@ class AuthMiddleware(MiddlewareMixin):
                     else:
                         return HttpResponse("Authorization Expired")
                 except:
-                    traceback.print_exc()
                     return HttpResponse("Failed to Login")
 
         except:
-            traceback.print_exc()
             return redirect('signin')
